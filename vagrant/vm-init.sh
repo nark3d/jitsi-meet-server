@@ -89,7 +89,9 @@ vagrant up --no-provision
 echo "Ensuring gcc/make/kernel-devel are installed..."
 vagrant ssh -- "sudo apt-get -q -y install gcc make linux-kernel-headers linux-headers-\$(uname -r)"
 echo "Installing some useful preliminary packages"
-vagrant ssh -- "sudo apt-get -q -y install rsync vim"
+vagrant ssh -- "sudo apt-get -q -y install rsync vim wget curl"
+
+vagrant ssh -- 'sudo bash -c "curl https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh | bash; source ~/.bashrc; nvm install 6; nvm use node 6"'
 
 vagrant plugin install vagrant-hostsupdater
 vagrant plugin install vagrant-vbguest
